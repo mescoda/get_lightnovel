@@ -1,7 +1,8 @@
 <?php
 
-$url = 'http://lknovel.lightnovel.cn/main/vollist/178.html';
+// $url = 'http://lknovel.lightnovel.cn/main/vollist/178.html';
 // $url = 'http://lknovel.lightnovel.cn/main/book/890.html';
+$url = 'http://lknovel.lightnovel.cn/main/vollist/283.html';
 
 if(strpos($url, 'view')) {
 	$type = 'chapter';
@@ -66,7 +67,8 @@ function get_book($url) {
 		array_push($book_links, $link[1]);
 	}
 	foreach($book_links as $link) {
-		$book_content .= get_chapter('http://lknovel.lightnovel.cn'.$link);
+		// $book_content .= get_chapter('http://lknovel.lightnovel.cn'.$link);
+		$book_content .= get_chapter($link);
 	}
 	file_put_contents("$file_name.txt", $book_content);
 	echo "$title whole done \n";
@@ -81,7 +83,8 @@ function get_series($url) {
 		array_push($series_links, $link[1]);
 	}
 	foreach($series_links as $book_link) {
-		get_book('http://lknovel.lightnovel.cn'.$book_link);
+		// get_book('http://lknovel.lightnovel.cn'.$book_link);
+		get_book($book_link);
 	}
 	echo "series done \n";
 }
